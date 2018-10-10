@@ -1,3 +1,4 @@
+<style>
 * {
   box-sizing: border-box;
 }
@@ -18,16 +19,16 @@ p {
 .container{
   width:100%;
 }
-#box1{
+#one{
 	background-color:gray;
 }
-#box2{
+#two{
 	background-color: rgb(220,200,100);
 }
-#box3{
+#three{
 	background-color:rgb(200,150,100);
 }
-#box1,#box2,#box3{
+#one,#two,#three{
   border: 1px solid black;
   width: 50px;
   height: 20px;
@@ -59,7 +60,7 @@ p {
 /* tablet */
 @media (min-width: 768px) and (max-width: 991px) {
   .col-md-1, .col-md-2, .col-md-3{
-  	float: left;
+    float: left;
     border: 1.5px solid black;
     position:relative;
     padding:10px;
@@ -79,10 +80,10 @@ p {
 .col-lig-1, .col-lig-2, .col-lig-3{
     border: 1.5px solid black;
     position:relative;
-    /*float:left;*/
     padding:8px;
     width:98%;
     margin:1%;
     background-color: #A52A2A;
 }
 }
+</style>
