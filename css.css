@@ -10,7 +10,7 @@ h1 {
 p {
   background-color: #A52A2A;
   width: 90%;
-  height: 150px;
+  height: auto;
   font-family: Helvetica;
   color: white;
   overflow:auto;
