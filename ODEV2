@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateForm() {  
+  var kontrol = true;
+  var bos_olmamali = document.querySelector("#name").value;
+  if (bos_olmamali == "") {
+     document.getElementById('error1').innerHTML="<span style='color:red'> hatalı giriş yaptınız </span>";
+     kontrol =false;
+  }
+  else{
+    document.getElementById('error1').innerHTML = '';
+  }
+  
+  var mail = document.querySelector("#email").value;
+  var email_kontrol = /(\w+)\@(\w+)\.[a-zA-Z]{3}\b/;
+  if (mail == "" || !email_kontrol.test(mail)) {
+     document.getElementById('error2').innerHTML="<span style='color:red'> hatalı giriş yaptınız </span>";
+     kontrol =false;
+  }
+  else{
+    document.getElementById('error2').innerHTML = '';
+  }
+  
+  var sayi = document.querySelector("#sayisal").value;
+  if (sayi == "" || isNaN(sayi)) {
+     document.getElementById('error3').innerHTML="<span style='color:red'> hatalı giriş yaptınız </span>";
+     kontrol =false;
+  }
+  else{
+    document.getElementById('error3').innerHTML = '';
+  }
+  
+  var sayisal = document.querySelector("#basamakli").value;
+  if (sayisal == "" || sayisal.length < 12 || isNaN(sayi)) {
+     document.getElementById('error4').innerHTML="<span style='color:red'> hatalı giriş yaptınız </span>";
+     kontrol =false;
+  }
+  else{
+    document.getElementById('error4').innerHTML = '';
+  }
+  
+  var alfa = document.querySelector("#alfa").value;
+  var harf_kontrol = /^[a-zA-Z]+$/;
+  if ( alfa == "" || !harf_kontrol.test(alfa)) {
+     document.getElementById('error5').innerHTML="<span style='color:red'> hatalı giriş yaptınız </span>";
+     kontrol =false;
+  }
+  else{
+    document.getElementById('error5').innerHTML = '';
+  }
+
+  var max30 = document.querySelector("#max30").value;
+  if ( max30 == "" || !harf_kontrol.test(max30) || max30.length>30) {
+     document.getElementById('error6').innerHTML="<span style='color:red'> hatalı giriş yaptınız </span>";
+     kontrol =false;
+  }
+  else{
+    document.getElementById('error6').innerHTML = '';
+  }
+  
+  var uckelime = document.querySelector("#uckelime").value;
+  if (uckelime.split(" ").length!= 3) {
+     document.getElementById('error7').innerHTML="<span style='color:red'> hatalı giriş yaptınız </span>";
+     kontrol =false;
+  }
+  else{
+    document.getElementById('error7').innerHTML = '';
+  }
+  while (1) {
+      var sifre = document.querySelector("#password").value;
+      if(sifre.length<8){
+        document.getElementById('error8').innerHTML="<span style='color:red'> hatalı giriş yaptınız </span>";
+        kontrol=false;
+        break;
+      }
+      var upperCase = false;
+      var lowerCase = false;
+      var digit = false;
+      var punctuation = false;
+         for(var i =0; i < sifre.length; i++){ 
+            if(64<sifre.charCodeAt(i) && sifre.charCodeAt(i)<91){ 
+              upperCase=true;
+            }
+            else if(96<sifre.charCodeAt(i) &&  sifre.charCodeAt(i)<123){ 
+              lowerCase=true;
+            }
+            else if(47<sifre.charCodeAt(i) && sifre.charCodeAt(i)<58){ 
+              digit=true; 
+            }
+            else{ 
+              punctuation=true;
+            }
+         } 
+      if (upperCase==false || lowerCase==false || digit==false || punctuation==false ) {
+          document.getElementById("hata_password").textContent = "sifreniz gerekli kosullari saglamali!";
+          kontrol=false;
+          break;
+      }
+      document.getElementById('error8').innerHTML = "";
+      break;
+    }
+    
+    if (kontrol==false){
+      return false;
+    }     
+}
+</script>
+</head>
+<body>
+<style>
+body{
+  background-color: #d6b4e7;
+  font-family:sherif;
+  color: #330033;
+}
+#error1,#error2,#error3,#error4,#error5,#error6,#error7,#error8{
+  width:30%;
+}
+</style>
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+  Aşağıdaki hiçbir input boş olmamalı: <br>
+
+
+  <table style="width:40%">
+  <tr>
+    <td>Boş olmamalı: </td>
+        <td><input type="text" id="name"></td>
+        <td id="error1"></td>
+
+  </tr>
+  <tr>
+    <td>E-mail (Kurallara uygun email): </td>
+    <td><input type="text" id="email"></td>
+    <td id="error2"></td>
+
+  </tr>
+  <tr>
+    <td>Sadece sayısal: </td>
+    <td><input type="text" id="sayisal"></td>
+    <td id="error3"></td>
+  </tr>
+  <tr>
+    <td>Sadece sayısal olan ve 12 basamak uzunluğundaki sayi: </td>
+    <td><input type="text" id="basamakli"></td>
+    <td id="error4"></td>
+  </tr>
+  <tr>
+    <td>Sadece harf (a..z veya A..Z): </td>
+    <td><input type="text" id="alfa"></td>
+    <td id="error5"></td>
+  </tr>
+  <tr>
+    <td>Sadece harf ve en fazla 30 uzunlukta olan string: </td>
+    <td><input type="text" id="max30"></td>
+    <td id="error6"></td>
+  </tr>
+  <tr>
+    <td>3 kelimeden oluşan string: </td>
+    <td><input type="text" id="uckelime"></td>
+    <td id="error7"></td>
+  </tr>
+  <tr>
+    <td>En az 1 büyük harf, en az 1 küçük harf, en az bir rakam ve en az 1 noktalama işareti içeren ve en az 8 uzunluğunda olan metin: </td>
+    <td><input type="text" id="password"></td>
+    <td id="error8"></td>
+  </tr>
+
+
+</table>
+<br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
